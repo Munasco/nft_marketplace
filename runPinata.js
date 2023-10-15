@@ -2,11 +2,11 @@ const axios = require("axios");
 const fs = require("fs");
 axios
   .get(
-    "https://amethyst-tremendous-turtle-55.mypinata.cloud/ipfs/Qmagetb9anpn3YhYW8cNoiWetPhNUmZAnHBWJ9vcwvNuGE",
+    "https://amethyst-tremendous-turtle-55.mypinata.cloud/ipfs/QmaCBeTkAxF5689tGN1xk4HQ11Dw9J5sD1xc1sfJfZABFg",
     {
       headers: {
         "x-pinata-gateway-token":
-          "_LL4RBT18RUyjIcJUFNMPLywVI7MlVkVtQJlKOeijHskzTNyYZjb5qiPDuN4_Egw",
+          "fQVbJOxWqESifpXpjvlk68ig1m8BHQ_cfNQEBi54vmDcjFNHzjM7Pab8Fonp-LHB",
       },
       responseType: "arraybuffer",
     }

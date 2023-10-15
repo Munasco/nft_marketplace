@@ -19,20 +19,20 @@ function DisplayNFTs({ contractAddress }) {
       );
 
       const balance = await simpleNFT.methods.balanceOf(accounts[0]).call();
+      console.log(balance);
       const nfts = [];
       for (let i = 0; i < balance; i++) {
-        const tokenURI = await simpleNFT.methods.tokenURI(tokenId).call();
+        const tokenURI = await simpleNFT.methods.tokenURI(i).call();
+        console.log(tokenURI);
         axios
-          .get(`http://localhost:3000/getNFT/${tokenURI}`)
+          .get(`http://localhost:3001/getNFT/${tokenURI}`)
           .then((response) => {
             const imageBase64 = response.data.image;
-            setNfts((prevNfts) => [
-              {
-                tokenId: tokenId,
-                imageSrc: imageBase64,
-              },
-              ...prevNfts,
-            ]);
+            nfts.push({
+              tokenId: tokenId,
+              imageSrc: imageBase64,
+            });
+            setNfts(nfts);
           })
           .catch((error) => {
             console.error(error);

@@ -43,14 +43,7 @@ function MintNFT({ contractAddress }) {
       {isLoading && <div>Minting NFT...</div>}
       {transactionHash && (
         <div>
-          Transaction sent! Hash:{" "}
-          <a
-            href={`https://etherscan.io/tx/${transactionHash}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {transactionHash}
-          </a>
+          Transaction sent! Hash: <a>{transactionHash}</a>
         </div>
       )}
     </div>
