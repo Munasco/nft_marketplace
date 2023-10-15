@@ -104,26 +104,65 @@ function App() {
   };
 
   const disableConnect = Boolean(wallet) && isConnecting;
+  const containerStyle = {
+    padding: "20px",
+    textAlign: "center",
+    backgroundColor: "#f0f0f0",
+    minHeight: "100vh",
+    fontFamily: "Arial, sans-serif",
+  };
+
+  const buttonStyle = {
+    margin: "10px",
+    padding: "10px 20px",
+    borderRadius: "4px",
+    border: "none",
+    backgroundColor: "#008CBA",
+    color: "#fff",
+    cursor: "pointer",
+    fontSize: "16px",
+  };
+
+  const infoStyle = {
+    backgroundColor: "#ffffff",
+    padding: "10px 20px",
+    margin: "10px 0",
+    borderRadius: "4px",
+    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+  };
+
+  const linkStyle = {
+    color: "#008CBA",
+    textDecoration: "none",
+  };
+
   return (
-    <div className="App" style={{ textAlign: "center", margin: "30px" }}>
+    <div className="App" style={containerStyle}>
       <h2>Connected Account: {wallet.accounts[0]}</h2>
       <h2>Chain ID: {wallet.chainId}</h2>
       <h2>Contract Address: {contractAddress}</h2>
       {window.ethereum?.isMetaMask && wallet.accounts.length < 1 && (
-        <button disabled={disableConnect} onClick={handleConnect}>
+        <button
+          disabled={disableConnect}
+          onClick={handleConnect}
+          style={buttonStyle}
+        >
           Connect MetaMask
         </button>
       )}
       <br />
-      <button onClick={handleDeploy}>Deploy Contract</button>
-      {isLoading && <div>Deploying contract...</div>}
+      <button onClick={handleDeploy} style={buttonStyle}>
+        Deploy Contract
+      </button>
+      {isLoading && <div style={infoStyle}>Deploying contract...</div>}
       {transactionHash && !contractAddress && (
-        <div>
+        <div style={infoStyle}>
           Transaction sent! Hash:{" "}
           <a
             href={`https://etherscan.io/tx/${transactionHash}`}
             target="_blank"
             rel="noopener noreferrer"
+            style={linkStyle}
           >
             {transactionHash}
           </a>
@@ -131,7 +170,7 @@ function App() {
       )}
       {contractAddress && (
         <>
-          <div>Contract deployed at: {contractAddress}</div>
+          <div style={infoStyle}>Contract deployed at: {contractAddress}</div>
           <MintNFT contractAddress={contractAddress} />
           <DisplayNFTs contractAddress={contractAddress} />
         </>
