@@ -1,7 +1,15 @@
 .App {
-  text-align: center;
+  display: flex;
+    text-align: center;
+  flex-direction: column;
+  place-items: center;
+  min-width: 100vw;
+  min-height: 100vh;
 }
 
+button {
+  margin-top: 0.5em;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
